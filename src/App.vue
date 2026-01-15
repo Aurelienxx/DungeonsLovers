@@ -2,14 +2,22 @@
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+    <img
+      alt="Vue logo"
+      class="logo"
+      src="./img/image-removebg-preview.png"
+      height="120"
+      width="200"
+    />
+    <animated-text text="Dungeons Lovers" />
     <nav>
       <router-link to="/"> Accueil </router-link>
+      <router-link to="/login"> login </router-link>
       <router-link to="/users"> Utilisateurs </router-link>
+      <router-link to="/about"> Héros </router-link>
     </nav>
   </header>
   <body>
-    Bienvenue sur Dungeons & Lovers !
     <router-view />
   </body>
 </template>
@@ -20,12 +28,16 @@ header {
   text-align: center;
 }
 
-em {
-  font-style: normal;
-  display: block;
-  text-align: center;
-  margin-top: 1rem;
-  font-size: 1.25rem;
+animated-text {
+  font-size: 2rem;
+  color: white;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+nav a {
+  margin: 0 15px;
+  color: white;
 }
 
 .logo {
@@ -36,7 +48,7 @@ em {
 @media (min-width: 1024px) {
   header {
     display: flex;
-    place-items: top;
+    place-items: center;
     padding-right: calc(var(--section-gap) / 2);
   }
 

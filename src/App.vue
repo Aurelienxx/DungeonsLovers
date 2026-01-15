@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import router from './router'
+</script>
 
 <template>
   <header>
@@ -11,10 +13,11 @@
     />
     <animated-text text="Dungeons Lovers" />
     <nav>
-      <router-link to="/"> Accueil </router-link>
-      <router-link to="/login"> login </router-link>
-      <router-link to="/users"> Utilisateurs </router-link>
-      <router-link to="/heros"> Héros </router-link>
+      <router-link to="/"> Home </router-link>
+      <router-link to="/register"> Register </router-link>
+      <router-link to="/login"> Login </router-link>
+      <router-link to="/users"> Users </router-link>
+      <router-link to="/heros"> Heroes </router-link>
     </nav>
   </header>
   <body>
@@ -26,13 +29,6 @@
 header {
   background-color: red;
   text-align: center;
-}
-
-animated-text {
-  font-size: 2rem;
-  color: white;
-  margin-bottom: 1rem;
-  font-weight: bold;
 }
 
 nav a {

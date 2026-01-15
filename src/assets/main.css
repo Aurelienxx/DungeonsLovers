@@ -2,6 +2,10 @@
 
 #app {
   font-weight: normal;
+
+  background-image: url('./src/img/dungeon-background.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 a,
@@ -16,4 +20,20 @@ a,
   a:hover {
     background-color: hsla(160, 100%, 37%, 0.2);
   }
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: auto;
+  border: 1px solid red;
+  padding: 20px;
+  border-radius: 5px;
+  line-height: 2.2;
 }

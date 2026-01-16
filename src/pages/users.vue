@@ -3,7 +3,7 @@
     <h1>Users</h1>
     <ul>
       <li v-for="user in users" :key="user.UserId">
-        {{ user.LastName }} - {{ user.FirstName }} - {{ user.UserName }}
+        {{ user.LastName }} - {{ user.FirstName }} - {{ user.Username }}
       </li>
     </ul>
   </div>
@@ -18,7 +18,12 @@ const users = ref<User[]>([])
 
 onMounted(async () => {
   try {
-    const res = await axios.get<User[]>('http://localhost:3000/api/users/getUsers')
+    const token = localStorage.getItem('token')
+    const res = await axios.get<User[]>('http://localhost:3000/api/users/getUsers', {
+      headers: {
+        Authorization: "Bearer " + token
+      }
+    })
     users.value = res.data
   } catch (err) {
     console.error('Erreur lors de la récupération des utilisateurs :', err)

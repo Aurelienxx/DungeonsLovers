@@ -20,11 +20,11 @@ export const loginUser = (req, res) => {
 
       // Vérification du mot de passe
           if ((Password === user.Password) === false) {
-            return res.status(404).json({ message: "Mot de passe incorrect" })
+            return res.status(401).json({ message: "Mot de passe incorrect" })
           }
 
       // Création d’un token JWT
-      const token = jwt.sign({ UserId: user.UserId, email: user.email }, JWT_SECRET, { expiresIn: '1h' })
+      const token = jwt.sign({ UserId: user.UserId, Username: user.Username }, JWT_SECRET, { expiresIn: '1h' })
 
       res.json({ token })
   })

@@ -23,9 +23,10 @@ watch(
 
 const save = () => {
   if (store.editingHeroId !== null) {
-    store.saveHero(props.hero.HeroId)
+    store.saveHero(props.hero.HeroId, editForm.value)
   }
 }
+
 </script>
 
 <template>

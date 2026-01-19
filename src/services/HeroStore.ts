@@ -27,13 +27,13 @@ export const useHeroesStore = defineStore('heroes', () => {
     editForm.value = {}
   }
 
-const saveHero = async (heroId: number) => {
+const saveHero = async (heroId: number, updatedValues: Partial<Hero>) => {
   try {
     const token = localStorage.getItem('token')
 
     await axios.put(
       `http://localhost:3000/heroes/updateHero/${heroId}`,
-      editForm.value,
+      updatedValues,
       {
         headers: {
           Authorization: `Bearer ${token}`
@@ -43,7 +43,7 @@ const saveHero = async (heroId: number) => {
 
     const index = heroes.value.findIndex(h => h.HeroId === heroId)
     if (index !== -1) {
-      heroes.value[index] = { ...heroes.value[index], ...editForm.value } as Hero
+      heroes.value[index] = { ...heroes.value[index], ...updatedValues } as Hero
     }
 
     cancelEditing()
@@ -51,6 +51,7 @@ const saveHero = async (heroId: number) => {
     console.error('Erreur lors de la mise à jour du héros :', err)
   }
 }
+
 
 
   return {

@@ -39,7 +39,7 @@ const submitLogin = async () => {
     localStorage.setItem('token', token)
 
     console.log('Connexion réussie')
-    router.push('/home')
+    router.push('/')
   } catch (err) {
     console.error('Erreur lors de la connexion :', err)
   }

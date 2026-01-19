@@ -1,4 +1,19 @@
 <script setup lang="ts">
+import { useAuthStore } from '@/services/useAuthStore'
+import { computed } from 'vue'
+import { useRouter } from 'vue-router'
+
+const authStore = useAuthStore()
+const router = useRouter()
+
+// Computed pour savoir si l'utilisateur est connecté
+const isLoggedIn = computed(() => !!authStore.token)
+
+// Déconnexion et redirection
+const handleLogout = () => {
+  authStore.logout()          // supprime token & user
+  router.push('/login')       // redirige vers login
+}
 </script>
 
 <template>
@@ -11,17 +26,26 @@
       width="200"
     />
     <animated-text text="Dungeons Lovers" />
+
     <nav>
       <router-link to="/"> Home </router-link>
       <router-link to="/users"> Users </router-link>
       <router-link to="/heroes"> Heroes </router-link>
     </nav>
+
     <nav class="LoRe">
-      <router-link to="/login"> Login </router-link>
-      <router-link to="/register"> Register </router-link>
+      <template v-if="!isLoggedIn">
+        <router-link to="/login"> Login </router-link>
+        <router-link to="/register"> Register </router-link>
+      </template>
+      <template v-else>
+        <router-link to="/login" @click.prevent="handleLogout">Logout</router-link>
+      </template>
     </nav>
   </header>
 </template>
+
+
 
 <style scoped>
 header {

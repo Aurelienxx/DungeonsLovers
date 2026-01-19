@@ -20,7 +20,7 @@
 
       <div>
         <label for="password">Password : </label>
-        <input type="text" id="password" v-model="Password" />
+        <input type="password" id="password" v-model="Password" />
       </div>
 
       <button type="submit">Register</button>

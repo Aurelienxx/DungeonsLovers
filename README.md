@@ -1,4 +1,5 @@
 # Projet créé par Piquet Edwyn et Pinceel Matthieu GROUPE 9
+# Projet modifié par Dusannier Léothen et Fontaine Aurélien GROUPE 12
 
 Application web fullstack utilisant **Vue.js** pour le frontend et **Node.js / Express** pour le backend, avec une base de données **MySQL**.  
 Le projet met en place une API REST ainsi qu’un système d’authentification avec **JWT**.
@@ -34,7 +35,7 @@ DungeonsLovers/
 
 ├── src/ assets/ | components/ | pages/ | types/ | App.vue | main.ts
 
-├── public/
+├── public/ img/ | heroImages/ | other/ | 
 
 ├── package.json
 
@@ -60,7 +61,7 @@ CREATE TABLE users (UserId int NOT NULL AUTO_INCREMENT, LastName varchar(255), F
 
 CREATE TABLE otherInfos(MiscellaneousId int NOT NULL AUTO_INCREMENT, forward int NOT NULL, backward int NOT NULL, critBuffBonus varchar(255), isReligious boolean NOT NULL, providesItems varchar(255) NOT NULL, PRIMARY KEY (MiscellaneousId));
 
-CREATE TABLE resistances(ResListId int NOT NULL AUTO_INCREMENT, Stun int NOT NULL, Blight int NOT NULL, Disease int NOT NULL, Move int NOT NULL, Bleed int NOT NULL, Debuff int NOT NULL, Trap int NOT NULL, DeathBlow int NOT NULL, PRIMARY KEY(ResListId));
+CREATE TABLE resistances(ResListId int NOT NULL AUTO_INCREMENT, Stun int NOT NULL, Blight int NOT NULL, Disease int NOT NULL, Move int NOT NULL, Bleed int NOT NULL, Debufff int NOT NULL, Trap int NOT NULL, DeathBlow int NOT NULL, PRIMARY KEY(ResListId));
 
 CREATE TABLE heroes(HeroId int NOT NULL AUTO_INCREMENT, Name varchar(255), MaxHP int NOT NULL, Dodge double NOT NULL, Protection double NOT NUll, Speed double NOT NULL, AccuracyModifier double NOT NULL, CriticChance double NOT NULL, Damage double NOT NULL, ResListId int NOT NULL, MiscellaneousId int NOT NULL, imageURL varchar(255), PRIMARY KEY (HeroId), FOREIGN KEY (ResListId) REFERENCES resistances(ResListId), FOREIGN KEY (MiscellaneousId) references otherInfos(MiscellaneousId));
 
@@ -68,7 +69,7 @@ CREATE TABLE heroes(HeroId int NOT NULL AUTO_INCREMENT, Name varchar(255), MaxHP
 
 
 
-INSERT INTO resistances (Stun, Blight, Disease, Move, Bleed, Debuf, Trap, DeathBlow)
+INSERT INTO resistances (Stun, Blight, Disease, Move, Bleed, Debuff, Trap, DeathBlow)
 VALUES (40, 60, 20, 40, 30, 20, 10, 67);
 
 INSERT INTO otherInfos
@@ -82,7 +83,7 @@ VALUES
 ('Abomination', 26, 7.5, 0, 7, 0, 2, 8.5, 1, 1);
 
 
-INSERT INTO resistances (Stun, Blight, Disease, Move, Bleed, Debuf, Trap, DeathBlow)
+INSERT INTO resistances (Stun, Blight, Disease, Move, Bleed, Debuff, Trap, DeathBlow)
 VALUES (20, 20, 20, 20, 20, 20, 10, 67);
 
 INSERT INTO otherInfos
@@ -96,7 +97,7 @@ VALUES
 ('Antiquarian', 17, 10, 0, 5, 0, 1, 4, 2, 2);
 
 
-INSERT INTO resistances (Stun, Blight, Disease, Move, Bleed, Debuf, Trap, DeathBlow)
+INSERT INTO resistances (Stun, Blight, Disease, Move, Bleed, Debuff, Trap, DeathBlow)
 VALUES (40, 30, 30, 40, 30, 30, 10, 67);
 
 INSERT INTO otherInfos
@@ -111,7 +112,7 @@ VALUES
 
 
 INSERT INTO resistances
-(Stun, Blight, Disease, Move, Bleed, Debuf, Trap, DeathBlow)
+(Stun, Blight, Disease, Move, Bleed, Debuff, Trap, DeathBlow)
 VALUES
 (40, 30, 20, 40, 30, 30, 40, 67);
 
@@ -127,7 +128,7 @@ VALUES
 
 
 INSERT INTO resistances
-(Stun, Blight, Disease, Move, Bleed, Debuf, Trap, DeathBlow)
+(Stun, Blight, Disease, Move, Bleed, Debuff, Trap, DeathBlow)
 VALUES
 (40, 30, 30, 40, 30, 30, 10, 67);
 
@@ -143,7 +144,7 @@ VALUES
 
 
 INSERT INTO resistances
-(Stun, Blight, Disease, Move, Bleed, Debuf, Trap, DeathBlow)
+(Stun, Blight, Disease, Move, Bleed, Debuff, Trap, DeathBlow)
 VALUES
 (50, 30, 40, 50, 65, 30, 0, 73);
 
@@ -160,7 +161,7 @@ VALUES
 
 
 INSERT INTO resistances
-(Stun, Blight, Disease, Move, Bleed, Debuf, Trap, DeathBlow)
+(Stun, Blight, Disease, Move, Bleed, Debuff, Trap, DeathBlow)
 VALUES
 (20, 50, 30, 20, 30, 30, 50, 67);
 
@@ -176,7 +177,7 @@ VALUES
 
 
 INSERT INTO resistances
-(Stun, Blight, Disease, Move, Bleed, Debuf, Trap, DeathBlow)
+(Stun, Blight, Disease, Move, Bleed, Debuff, Trap, DeathBlow)
 VALUES
 (40, 40, 30, 40, 40, 30, 20, 67);
 
@@ -192,7 +193,7 @@ VALUES
 
 
 INSERT INTO resistances
-(Stun, Blight, Disease, Move, Bleed, Debuf, Trap, DeathBlow)
+(Stun, Blight, Disease, Move, Bleed, Debuff, Trap, DeathBlow)
 VALUES
 (30, 30, 30, 30, 30, 30, 40, 67);
 
@@ -208,7 +209,7 @@ VALUES
 
 
 INSERT INTO resistances
-(Stun, Blight, Disease, Move, Bleed, Debuf, Trap, DeathBlow)
+(Stun, Blight, Disease, Move, Bleed, Debuff, Trap, DeathBlow)
 VALUES
 (40, 40, 30, 40, 40, 30, 40, 67);
 
@@ -224,7 +225,7 @@ VALUES
 
 
 INSERT INTO resistances
-(Stun, Blight, Disease, Move, Bleed, Debuf, Trap, DeathBlow)
+(Stun, Blight, Disease, Move, Bleed, Debuff, Trap, DeathBlow)
 VALUES
 (20, 40, 20, 20, 30, 40, 30, 67);
 
@@ -240,7 +241,7 @@ VALUES
 
 
 INSERT INTO resistances
-(Stun, Blight, Disease, Move, Bleed, Debuf, Trap, DeathBlow)
+(Stun, Blight, Disease, Move, Bleed, Debuff, Trap, DeathBlow)
 VALUES
 (60, 40, 20, 60, 10, 40, 10, 67);
 
@@ -256,7 +257,7 @@ VALUES
 
 
 INSERT INTO resistances
-(Stun, Blight, Disease, Move, Bleed, Debuf, Trap, DeathBlow)
+(Stun, Blight, Disease, Move, Bleed, Debuff, Trap, DeathBlow)
 VALUES
 (40, 30, 30, 40, 40, 30, 10, 67);
 
@@ -272,7 +273,7 @@ VALUES
 
 
 INSERT INTO resistances
-(Stun, Blight, Disease, Move, Bleed, Debuf, Trap, DeathBlow)
+(Stun, Blight, Disease, Move, Bleed, Debuff, Trap, DeathBlow)
 VALUES
 (40, 30, 30, 40, 30, 30, 10, 67);
 
@@ -288,7 +289,7 @@ VALUES
 
 
 INSERT INTO resistances
-(Stun, Blight, Disease, Move, Bleed, Debuf, Trap, DeathBlow)
+(Stun, Blight, Disease, Move, Bleed, Debuff, Trap, DeathBlow)
 VALUES
 (20, 30, 40, 20, 40, 60, 10, 67);
 
@@ -304,7 +305,7 @@ VALUES
 
 
 INSERT INTO resistances
-(Stun, Blight, Disease, Move, Bleed, Debuf, Trap, DeathBlow)
+(Stun, Blight, Disease, Move, Bleed, Debuff, Trap, DeathBlow)
 VALUES
 (20, 60, 50, 20, 20, 50, 20, 67);
 
@@ -319,7 +320,7 @@ VALUES
 ('Plague Doctor', 22, 0, 0, 7, 0, 2, 5.5, 16, 16);
 
 INSERT INTO resistances
-(Stun, Blight, Disease, Move, Bleed, Debuf, Trap, DeathBlow)
+(Stun, Blight, Disease, Move, Bleed, Debuff, Trap, DeathBlow)
 VALUES
 (50, 20, 30, 50, 30, 30, 20, 67);
 
@@ -335,7 +336,7 @@ VALUES
 
 
 INSERT INTO resistances
-(Stun, Blight, Disease, Move, Bleed, Debuf, Trap, DeathBlow)
+(Stun, Blight, Disease, Move, Bleed, Debuff, Trap, DeathBlow)
 VALUES
 (30, 30, 30, 30, 40, 30, 10, 67);
 

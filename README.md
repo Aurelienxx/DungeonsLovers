@@ -2,7 +2,7 @@
 
 Application web fullstack utilisant **Vue.js** pour le frontend et **Node.js / Express** pour le backend, avec une base de données **MySQL**.  
 Le projet met en place une API REST ainsi qu’un système d’authentification avec **JWT**.
-
+Afin de lancer le projet, il faut télécharger les dépendances avec **npm install** et lancer le projet avec **npm fun dev:full** 
 ---
 
 ## Technologies utilisées

@@ -1,26 +1,31 @@
 <template>
   <div class="home">
     <h1>Accueil</h1>
-    <tr>
-      <td>
-        <h1>Bienvenue sur Dungeons Lovers !</h1>
-        <div class="wrapper">
-          <p>
-            Plongez dans un univers fantastique où l'aventure et la camaraderie vous attendent.
-            Rejoignez notre communauté de passionnés de jeux de rôle et explorez des donjons
-            mystérieux, combattez des créatures légendaires et forgez des alliances épiques.
-          </p>
-          <img
-            class="background"
-            src="..\img\Leper_combat.gif"
-            height="212"
-            width="297"
-          />
-        </div>
-      </td>
-    </tr>
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            <h1>Bienvenue sur Dungeons Lovers !</h1>
+
+            <div class="wrapper">
+              <p>
+                Plongez dans un univers fantastique où l'aventure et la camaraderie vous attendent.
+              </p>
+
+              <img
+                class="background"
+                src="../img/Leper_combat.gif"
+                height="212"
+                width="297"
+              />
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
+
 
 <script setup lang="ts"></script>
 <style scoped>

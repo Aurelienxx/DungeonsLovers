@@ -29,8 +29,11 @@
 </template>
 
 <script setup lang="ts">
+  import { useRouter } from 'vue-router'
   import { ref } from 'vue'
   import axios from 'axios'
+
+  const router = useRouter()
 
   const FirstName = ref('')
   const LastName = ref('')
@@ -45,11 +48,14 @@
         Password: Password.value,
         Username: Username.value
       })
+
+      console.log(res.data)
     
     const token = res.data.token
     localStorage.setItem('token', token)
 
     console.log("Inscription terminée, token stocké !")
+    router.push('/')
     }
     catch(err) {
       console.error("Erreur lors de l'inscription : " + err)

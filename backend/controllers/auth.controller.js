@@ -26,7 +26,7 @@ export const loginUser = (req, res) => {
       // Création d’un token JWT
       const token = jwt.sign({ UserId: user.UserId, email: user.email }, JWT_SECRET, { expiresIn: '1h' })
 
-      res.json({ message: 'Connexion réussie : ' + token })
+      res.json({ token })
   })
 }
 
@@ -53,7 +53,7 @@ export const registerUser = (req, res) => {
           
           const token = jwt.sign({UserId: result.insertId, Username}, JWT_SECRET, {expiresIn: '1h'})
 
-          return res.json({ message: 'Connexion réussie : ' + token })
+          return res.json({ token })
         }
       )
     }

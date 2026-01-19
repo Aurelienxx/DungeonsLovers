@@ -1,21 +1,51 @@
 <template>
   <div>
     <h1>Login</h1>
-    <form>
+
+    <form @submit.prevent="submitLogin">
       <div>
         <label for="username">Username : </label>
-        <input type="text" id="username" name="username" />
+        <input type="text" id="username" v-model="Username" />
       </div>
+
       <div>
         <label for="password">Password : </label>
-        <input type="password" id="password" name="password" />
+        <input type="password" id="password" v-model="Password" />
       </div>
+
       <button type="submit">Connect</button>
     </form>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import axios from 'axios'
+
+const router = useRouter()
+
+const Username = ref('')
+const Password = ref('')
+
+const submitLogin = async () => {
+  try {
+    const res = await axios.post('http://localhost:3000/authentification/login', {
+      Username: Username.value,
+      Password: Password.value
+    })
+
+    const token = res.data.token
+    localStorage.setItem('token', token)
+
+    console.log('Connexion réussie')
+    router.push('/home')
+  } catch (err) {
+    console.error('Erreur lors de la connexion :', err)
+  }
+}
+</script>
+
 <style scoped>
 h1 {
   text-align: center;

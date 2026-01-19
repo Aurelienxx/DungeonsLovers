@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "vite",
     "dev:backend": "nodemon backend/app.js",
+    "dev:full": "concurrently \"npm run dev\" \"npm run dev:backend\"",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "build-only": "vite build",
@@ -30,6 +31,7 @@
     "@types/node": "^24.10.4",
     "@vitejs/plugin-vue": "^6.0.3",
     "@vue/tsconfig": "^0.8.1",
+    "concurrently": "^9.2.1",
     "npm-run-all2": "^8.0.4",
     "prettier": "3.7.4",
     "typescript": "~5.9.3",

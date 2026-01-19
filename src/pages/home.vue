@@ -12,7 +12,7 @@
           </p>
           <img
             class="background"
-            src="D:\Dev\Der\R6\maintenance\DungeonsLovers\src\img\Leper_combat.gif"
+            src="..\img\Leper_combat.gif"
             height="212"
             width="297"
           />

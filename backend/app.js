@@ -9,7 +9,7 @@ app.use(cors())
 app.use(express.json())
 app.use('/users', userRoutes)
 app.use('/authentification', authRoutes)
-app.use('/api/heroes', heroesRoutes)
+app.use('/heroes', heroesRoutes)
 
 app.listen(3000, () => {
   console.log('Serveur lancé sur http://localhost:3000')

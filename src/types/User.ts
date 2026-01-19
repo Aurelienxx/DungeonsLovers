@@ -2,6 +2,6 @@ export interface User {
   UserId: number;
   FirstName: string;
   LastName: string;
-  UserName: string;
+  Username: string;
   Password: string;
 }

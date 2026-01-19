@@ -1,4 +1,5 @@
 import db from "../config/db.js";
+import { createUserInDb } from '../services/users.service.js'
 
 // Renvoie tous les utilisateurs de la table users.
 export const getAllUsers = (req, res) => {
@@ -11,41 +12,56 @@ export const getAllUsers = (req, res) => {
 // Renvoie l'utilisateur correspondant à l'ID de la table users .
 export const getUser = (req, res) => {
   const id = req.params.id;
-  db.query("SELECT * FROM users WHERE id = ?", [id], (err, results) => {
+  db.query("SELECT * FROM users WHERE UserId = ?", [id], (err, results) => {
     if (err) return res.status(500).json(err);
     res.json(results[0]);
   });
 };
 
 // Créé un utilisateur dans la table users avec les informations fournies.
-export const createUser = (req, res) => {
-  const { LastName, FirstName, UserName } = req.body;
-  db.query(
-    "INSERT INTO users (UserId, LastName, FirstName, UserName) VALUES (0, ?, ?, ?)",
-    [LastName, FirstName, UserName],
-    (err, result) => {
-      if (err) 
-        return res.status(500).json(err);
-    
-      res.send({ message: 'Utilisateur' + LastName + FirstName + UserName + ' créé(e).'});
-    }
-  );
+export const createUser = (LastName, FirstName, password, Username) => {
+  createUserInDb({ LastName, FirstName, password, Username}, (err, result) => {
+    if (err)
+      return res.status(500).json(err)
+
+    res.json({
+      massage : 'Utilisateur' + LastName + ' ' + FirstName + ' - ' + Username + ' créé.'
+    })
+  })
 };
 
 // Modifie l'utilisateur correspondant à l'ID dans la table users
 export const updateUser = (req, res) => {
   const id = req.params.id;
-  const { LastName, FirstName, UserName } = req.body;
+  const { LastName, FirstName, Username, password } = req.body;
   db.query(
-    "UPDATE users SET LastName = ?, FirstName = ?, UserName = ? WHERE UserId = ?",
-    [LastName, FirstName, UserName, UserId],
-    (err, result) => {
-      if (err) 
+    "SELECT * FROM users WHERE UserId = ?", [id],
+    (err, rows) => {
+      if (err)
         return res.status(500).json(err);
-      
-      res.json({ message: 'Utilisateur' +  LastName + FirstName + UserName + ' modifié(e).'});
+      if (rows.lenght ===0) {
+        return res.status(404).json({ message: "Aucun utilisateur trouvé pour cet Id."})
+      }
+
+      const user = rows[0]
+      db.query(
+        "UPDATE users SET LastName = ?, FirstName = ?, Username = ?, password = ? WHERE UserId = ?",
+        [
+          LastName ?? user.LastName, 
+          FirstName ?? user.FirstName, 
+          Username ?? user.Username,
+          password ?? user.password,
+          id
+        ],
+        (err, result) => {
+          if (err) 
+            return res.status(500).json(err);
+          
+          res.json({ message: 'Utilisateur ' +  user.LastName + ' ' + user.FirstName + ' ' + user.Username + ' ' + user.password + ' modifié(e).'});
+        }
+      );
     }
-  );
+  )
 };
 
 // Vérifie l'existence de l'utilisateur lié à l'ID, et le supprime s'il existe.
@@ -59,6 +75,6 @@ export const deleteUser = (req, res) => {
       return res.status(404).json({ message: "Utilisateur non trouvé" });
     }
 
-    res.json({ message: "Utilisateur supprimé", id });
+    res.json({ message: 'Utilisateur supprimé : ' + id });
   });
 };

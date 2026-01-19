@@ -8,7 +8,7 @@ import register from '../pages/register.vue'
 const routes = [
   { path: '/', component: Home },
   { path: '/users', component: Users },
-  { path: '/heros', component: Heroes },
+  { path: '/heroes', component: Heroes },
   { path: '/login', component: Login },
   { path: '/register', component: register },
 ]
